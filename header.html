@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <title>index</title>
+    <style>
+      .header-div {
+        flex-direction: column;
+        width: 980px;
+      }
+      body {
+        font-family: "Noto Sans TC", "微軟正黑體";
+      }
+      .double_header {
+        font-size: 10px;
+        color: #b4b4b4;
+      }
+      header {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .login-btn {
+        --bs-btn-border-radius: 20rem;
+        height: 46px;
+      }
+      .nav-link {
+        font-size: 20px;
+        padding-bottom: 24px;
+
+        --bs-nav-link-color: #1c1c1c;
+        --bs-nav-link-hover-color: #aa0709;
+      }
+
+      a.nav-link.px-2 {
+        background: linear-gradient(to right, #002aff, #fb00ff) right bottom
+          no-repeat;
+        background-size: 0px 4px;
+        transition: background-size 0.5s;
+      }
+      a.nav-link.px-2:hover {
+        background-size: 100% 4px;
+        background-position: left bottom;
+      }
+      .link-blog {
+        border-radius: 5px;
+        /* background-color: #e3e331; */
+        font-size: 20px;
+        width: 100px;
+        height: 42px;
+        --bs-btn-color: white;
+        --bs-btn-bg: #ffbf00;
+        --bs-btn-hover-color: white;
+        --bs-btn-hover-bg: #ffce3c;
+      }
+      .btn-primary {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: #790dfd;
+        --bs-btn-border-color: #790dfd;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #9844ff;
+        --bs-btn-hover-border-color: #8d30fe;
+        --bs-btn-active-bg: #790dfd;
+      }
+      .btn-outline-primary {
+        --bs-btn-color: #790dfd;
+        --bs-btn-border-color: #790dfd;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #790dfd;
+        --bs-btn-hover-border-color: #790dfd;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #790dfd;
+        --bs-btn-active-border-color: #790dfd;
+      }
+      .slide-container {
+        max-width: 720px;
+      }
+      .carousel-inner {
+        border-radius: 50px;
+      }
+      .container {
+        padding: 60px 20px;
+      }
+      img.w-50.position-absolute {
+        border-radius: 10px;
+      }
+      .card {
+        box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
+        width: 60%;
+        border-radius: 10px;
+      }
+      .card-text {
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 0.54px;
+        line-height: 32px;
+        margin-top: 12px;
+      }
+      .card-title {
+        font-weight: 700;
+        color: #ff9d00;
+      }
+      .left-4 {
+        left: 40%;
+      }
+      .top-5 {
+        top: 50px;
+      }
+      .underline {
+        background-color: #ffce3c;
+        background-size: 100% 10px;
+        background-position: bottom;
+      }
+      footer {
+        background-color: #5b5b5b;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="d-flex flex-wrap justify-content-center pt-3 border-bottom">
+      <div class="d-flex flex-wrap justify-content-center header-div">
+        <div
+          class="mb-2 double_header align-items-center d-flex justify-content-end"
+        >
+          <span>double header</span>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="mb-2 mb-md-0">
+            <a href="/">
+              <img src="./logo_ltc.svg" alt="" />
+            </a>
+          </div>
+          <div class="d-flex">
+            <ul
+              class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 fw-semibold"
+            >
+              <li>
+                <a href="#" class="nav-link px-2">平台資訊</a>
+              </li>
+              <li><a href="#" class="nav-link px-2">課程安排</a></li>
+              <li><a href="#" class="nav-link px-2">課程分類</a></li>
+              <li><a href="#" class="nav-link px-2">課程搜索</a></li>
+            </ul>
+
+            <a href="#" class="btn px-2 link-blog fw-semibold ms-3 shadow-sm"
+              >部落格</a
+            >
+          </div>
+          <div class="d-flex text-end flex-row">
+            <button
+              type="button"
+              class="btn btn-outline-primary me-2 text-nowrap fw-semibold login-btn"
+            >
+              登入
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary text-nowrap fw-semibold login-btn"
+            >
+              註冊
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container slide-container">
+      <section>
+        <div id="carouselExampleCaptions" class="carousel slide">
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="d-block w-100"
+                alt="..."
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>
+                  Some representative placeholder content for the first slide.
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                src="https://images.unsplash.com/photo-1590402494811-8ffd29f17543?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="d-block w-100"
+                alt="..."
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>
+                  Some representative placeholder content for the second slide.
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="..." class="d-block w-100" alt="..." />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>
+                  Some representative placeholder content for the third slide.
+                </p>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+    </div>
+    <!-- content -->
+    <div class="container">
+      <span class="underline"
+        ><h2 class="fw-semibold mb-5">平台資訊 Information</h2></span
+      >
+      <img
+        src="https://images.unsplash.com/photo-1590402494811-8ffd29f17543?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        class="w-50 position-absolute"
+        alt="..."
+      />
+      <div class="d-flex justify-content-end">
+        <div class="card my-5 p-4">
+          <div class="card-body">
+            <h4 class="card-title pb-2 fs-2">關於我們</h4>
+            <p class="card-text">
+              Nemo veniam animi sapiente deleniti harum illum odit quidem rerum,
+              dolorem cumque ea vitae aliquid assumenda delectus tenetur.
+              Distinctio laborum iure totam.
+            </p>
+            <div class="d-flex justify-content-end">
+              <a href="#" class="btn btn-primary my-3"
+                >了解更多<span class="material-symbols-outlined align-middle">
+                  arrow_forward
+                </span></a
+              >
+            </div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title pb-2 fs-2">服務項目</h4>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptates ab soluta at adipisci pariatur temporibus dignissimos
+              ipsa eveniet facere nihil, non
+            </p>
+            <div class="d-flex justify-content-end">
+              <a href="#" class="btn btn-primary my-3"
+                >了解更多<span class="align-middle material-symbols-outlined">
+                  arrow_forward
+                </span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <span class="underline"
+        ><h2 class="fw-semibold mb-3">平台資訊 Information</h2></span
+      >
+      <img
+        src="https://images.unsplash.com/photo-1590402494756-10c265b9d736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        class="w-50 position-absolute left-4 mt-5"
+        alt="..."
+      />
+      <div class="d-flex">
+        <div class="card my-5 p-4 top-5">
+          <div class="card-body">
+            <h4 class="card-title pb-2 fs-2">關於我們</h4>
+            <p class="card-text">
+              Nemo veniam animi sapiente deleniti harum illum odit quidem rerum,
+            </p>
+            <div class="d-flex justify-content-end">
+              <a href="#" class="btn btn-primary my-3"
+                >了解更多<span class="material-symbols-outlined align-middle">
+                  arrow_forward
+                </span></a
+              >
+            </div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title pb-2 fs-2">服務項目</h4>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <div class="d-flex justify-content-end">
+              <a href="#" class="btn btn-primary my-3"
+                >了解更多<span class="align-middle material-symbols-outlined">
+                  arrow_forward
+                </span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <footer class="d-flex flex-column">
+      <div class="container">
+        <div
+          class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top"
+        >
+          <div class="col mb-3">
+            <a
+              href="/"
+              class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
+            >
+              <img src="./logo_ltc.svg" alt="" />
+            </a>
+            <p class="text-body-secondary">© 2023</p>
+          </div>
+
+          <div class="col mb-3"></div>
+
+          <div class="col mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">Home</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary"
+                  >Features</a
+                >
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">FAQs</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">About</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">Home</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary"
+                  >Features</a
+                >
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">FAQs</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">About</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">Home</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary"
+                  >Features</a
+                >
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">FAQs</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-body-secondary">About</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3">
+            <a class="link-body-emphasis" href="#"><span class="material-symbols-outlined">
+                record_voice_over
+                </span></a>
+          </li>
+          <li class="ms-3">
+            <a class="link-body-emphasis" href="#"><span class="material-symbols-outlined">
+                familiar_face_and_zone
+                </span></a>
+          </li>
+          <li class="ms-3">
+            <a class="link-body-emphasis" href="#"><span class="material-symbols-outlined">
+                responsive_layout
+                </span></a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
