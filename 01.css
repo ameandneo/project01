@@ -1,0 +1,133 @@
+.header-div {
+  flex-direction: column;
+  width: 980px;
+}
+body {
+  font-family: "Noto Sans TC", "微軟正黑體";
+}
+.double_header {
+  font-size: 12px;
+  color: #b4b4b4;
+}
+header {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+.login-btn {
+  --bs-btn-border-radius: 20rem;
+  height: 46px;
+  width: 80px;
+}
+.nav-link {
+  font-size: 20px;
+  padding-bottom: 24px;
+
+  --bs-nav-link-color: #1c1c1c;
+  --bs-nav-link-hover-color: #aa0709;
+}
+
+a.nav-link.px-2 {
+  background: linear-gradient(to right, #002aff, #fb00ff) right bottom
+    no-repeat;
+  background-size: 0px 4px;
+  transition: background-size 0.5s;
+}
+a.nav-link.px-2:hover {
+  background-size: 100% 4px;
+  background-position: left bottom;
+}
+.link-blog {
+  border-radius: 5px;
+  /* background-color: #e3e331; */
+  font-size: 20px;
+  width: 100px;
+  height: 42px;
+  --bs-btn-color: white;
+  --bs-btn-bg: #ffbf00;
+  --bs-btn-hover-color: white;
+  --bs-btn-hover-bg: #ffce3c;
+}
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #790dfd;
+  --bs-btn-border-color: #790dfd;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #9844ff;
+  --bs-btn-hover-border-color: #8d30fe;
+  --bs-btn-active-bg: #790dfd;
+}
+.btn-outline-primary {
+  --bs-btn-color: #790dfd;
+  --bs-btn-border-color: #790dfd;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #790dfd;
+  --bs-btn-hover-border-color: #790dfd;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #790dfd;
+  --bs-btn-active-border-color: #790dfd;
+}
+
+.carousel-inner {
+  border-radius: 50px;
+}
+.container {
+  padding: 60px 20px;
+}
+.slide-container {
+  max-width: 1000px;
+  padding-top: 155px;
+}
+img.w-50.position-absolute {
+  border-radius: 10px;
+}
+.card {
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.25);
+  width: 60%;
+  border-radius: 10px;
+}
+.card-text {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.54px;
+  line-height: 32px;
+  margin-top: 12px;
+}
+.card-title {
+  font-weight: 700;
+  color: #ff9d00;
+}
+.left-4 {
+  left: 40%;
+}
+.top-5 {
+  top: 50px;
+}
+.underline {
+  color: #000000;
+  font-size: 60px;
+}
+footer {
+  background-color: #5b5b5b;
+  color: rgb(201, 201, 201);
+  margin-top: 200px;
+}
+.material-symbols-outlined {
+  font-size: 40px;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  color: rgb(201, 201, 201);
+  margin: right 10px;
+}
+
+a.nav-link.p-0 {
+  --bs-nav-link-color: #a0a0a0;
+  --bs-nav-link-hover-color: #ffffff;
+}
+ul.flex-column {
+  padding-top: 10px;
+}
