@@ -21,15 +21,19 @@
         font-family: "Noto Sans TC", "微軟正黑體";
       }
       .double_header {
-        font-size: 10px;
+        font-size: 12px;
         color: #b4b4b4;
       }
       header {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        position: fixed;
+        z-index: 999;
       }
       .login-btn {
         --bs-btn-border-radius: 20rem;
         height: 46px;
+        width: 80px;
       }
       .nav-link {
         font-size: 20px;
@@ -79,14 +83,16 @@
         --bs-btn-active-bg: #790dfd;
         --bs-btn-active-border-color: #790dfd;
       }
-      .slide-container {
-        max-width: 720px;
-      }
+
       .carousel-inner {
         border-radius: 50px;
       }
       .container {
         padding: 60px 20px;
+      }
+      .slide-container {
+        max-width: 1000px;
+        padding-top: 155px;
       }
       img.w-50.position-absolute {
         border-radius: 10px;
@@ -114,18 +120,37 @@
         top: 50px;
       }
       .underline {
-        background-color: #ffce3c;
-        background-size: 100% 10px;
-        background-position: bottom;
+        color: #000000;
+        font-size: 60px;
       }
       footer {
         background-color: #5b5b5b;
-        color: white;
+        color: rgb(201, 201, 201);
+        margin-top: 200px;
+      }
+      .material-symbols-outlined {
+        font-size: 40px;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        color: rgb(201, 201, 201);
+        margin: right 10px;
+      }
+
+      a.nav-link.p-0 {
+        --bs-nav-link-color: #a0a0a0;
+        --bs-nav-link-hover-color: #ffffff;
+      }
+      ul.flex-column {
+        padding-top: 10px;
       }
     </style>
   </head>
   <body>
-    <header class="d-flex flex-wrap justify-content-center pt-3 border-bottom">
+    <header
+      class="d-flex flex-wrap justify-content-center pt-3 border-bottom w-100"
+    >
       <div class="d-flex flex-wrap justify-content-center header-div">
         <div
           class="mb-2 double_header align-items-center d-flex justify-content-end"
@@ -224,7 +249,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="..." class="d-block w-100" alt="..." />
+              <img src="" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
                 <h5>Third slide label</h5>
                 <p>
@@ -256,8 +281,8 @@
     </div>
     <!-- content -->
     <div class="container">
-      <span class="underline"
-        ><h2 class="fw-semibold mb-5">平台資訊 Information</h2></span
+      <span
+        ><h2 class="fw-semibold mb-5 underline">平台資訊 Information</h2></span
       >
       <img
         src="https://images.unsplash.com/photo-1590402494811-8ffd29f17543?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -301,8 +326,8 @@
     </div>
 
     <div class="container">
-      <span class="underline"
-        ><h2 class="fw-semibold mb-3">平台資訊 Information</h2></span
+      <span
+        ><h2 class="fw-semibold mb-3 underline">平台資訊 Information</h2></span
       >
       <img
         src="https://images.unsplash.com/photo-1590402494756-10c265b9d736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -343,105 +368,97 @@
     <!-- footer -->
     <footer class="d-flex flex-column">
       <div class="container">
-        <div
-          class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top"
-        >
-          <div class="col mb-3">
+        <div class="row pb-5 my-5">
+          <div class="col me-3">
             <a
               href="/"
               class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
             >
-              <img src="./logo_ltc.svg" alt="" />
+              <img style="width: 200px" src="./logo_ltc.svg" alt="" />
             </a>
-            <p class="text-body-secondary">© 2023</p>
+            <p class="ps-2">© 2023</p>
           </div>
 
           <div class="col mb-3"></div>
-
           <div class="col mb-3">
-            <h5>Section</h5>
+            <h4>服務項目</h4>
             <ul class="nav flex-column">
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">Home</a>
+                <a href="#" class="nav-link p-0">關於我們</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary"
-                  >Features</a
-                >
+                <a href="#" class="nav-link p-0">Features</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
+                <a href="#" class="nav-link p-0">服務特色</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">FAQs</a>
+                <a href="#" class="nav-link p-0">服務流程</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">About</a>
+                <a href="#" class="nav-link p-0">職缺搜尋</a>
               </li>
             </ul>
           </div>
 
           <div class="col mb-3">
-            <h5>Section</h5>
+            <h4>付款方式</h4>
             <ul class="nav flex-column">
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">Home</a>
+                <a href="#" class="nav-link p-0">近期活動</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary"
-                  >Features</a
-                >
+                <a href="#" class="nav-link p-0">Features</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
+                <a href="#" class="nav-link p-0">資訊專欄</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">FAQs</a>
+                <a href="#" class="nav-link p-0">預約諮詢</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">About</a>
+                <a href="#" class="nav-link p-0">About</a>
               </li>
             </ul>
           </div>
 
           <div class="col mb-3">
-            <h5>Section</h5>
+            <h4>會員方案</h4>
             <ul class="nav flex-column">
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">Home</a>
+                <a href="#" class="nav-link p-0">Home</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary"
-                  >Features</a
-                >
+                <a href="#" class="nav-link p-0">Features</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-              </li>
-              <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">FAQs</a>
-              </li>
-              <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 text-body-secondary">About</a>
+                <a href="#" class="nav-link p-0">Pricing</a>
               </li>
             </ul>
           </div>
         </div>
         <ul class="list-unstyled d-flex">
-          <li class="ms-3">
-            <a class="link-body-emphasis" href="#"><span class="material-symbols-outlined">
+          <li class="me-3 text-center">
+            <a class="material-symbols-outlined" href="#"
+              ><span class="material-symbols-outlined">
                 record_voice_over
-                </span></a>
+              </span></a
+            >
+            <h6>youtube</h6>
           </li>
-          <li class="ms-3">
-            <a class="link-body-emphasis" href="#"><span class="material-symbols-outlined">
+          <li class="me-3 text-center">
+            <a class="material-symbols-outlined" href="#"
+              ><span class="material-symbols-outlined">
                 familiar_face_and_zone
-                </span></a>
+              </span></a
+            >
+            <h6>instagram</h6>
           </li>
-          <li class="ms-3">
-            <a class="link-body-emphasis" href="#"><span class="material-symbols-outlined">
-                responsive_layout
-                </span></a>
+          <li class="me-3 text-center">
+            <a class="material-symbols-outlined" href="#"
+              ><span> responsive_layout </span></a
+            >
+            <h6>facebook</h6>
           </li>
         </ul>
       </div>
