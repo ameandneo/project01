@@ -1,0 +1,70 @@
+/* cover */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  --bs-nav-pills-link-active-bg: #ffffff;
+  border-left: 7px #2d60ff solid;
+  border-radius: 0%;
+  color: #2d60ff;
+}
+.nav-link {
+  padding: 13px 25px;
+}
+.nav-link:focus,
+.nav-link:hover {
+  color: #8b8b8b;
+}
+.nav-link {
+  color: #b1b1b1;
+}
+.portrait {
+  width: 50px;
+  height: 50px;
+}
+.portrait > i {
+ 
+  transform: scale(2);
+}
+/*  */
+* {
+  font-family: arial, sans-serif;
+  font-weight: bold;
+}
+*:lang(en) {
+  font-family: " var(--bs-body-font-family)", "Open+Sans", "Noto+Sans+Mono";
+}
+.sidebar li {
+  font-size: 20px;
+  font-weight: bold;
+}
+body {
+  background-color: #f5f7fa;
+}
+.sidebar {
+  background-color: rgb(255, 255, 255);
+  width: 230px;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  box-shadow: 1px 2px 2px #e6eff5;
+}
+#header {
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+header {
+  height: 100px;
+  width: 100%;
+}
+.container {
+  max-width: 1200px;
+}
+#searchInput {
+  height: 50px;
+  width: 255px;
+}
+#searchForm {
+  font-size: 20px;
+}
