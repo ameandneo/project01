@@ -25,12 +25,13 @@ $rows = $pdo->query(sprintf("SELECT * FROM course ORDER BY courseID ASC LIMIT " 
 // 選頁
 ?>
 
-<div class="container-right caption-top">
+<div class="container-right">
+  <h2>課程列表</h2>
   <caption><span>共10筆/顯示5筆</span></caption>
-  <table class="table table-hover table-bordered">
+  <table class="table table-hover table-bordered caption-top table-sm ">
     <thead>
       <tr>
-        <th scope="col">courseID</th>
+        <th scope="col" style="max-width: fit-content;">courseID</th>
         <th scope="col">Title</th>
         <th scope="col">教師</th>
         <th scope="col">Price</th>

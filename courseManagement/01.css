@@ -92,4 +92,6 @@ header{
 .page-nav{height: 38px;}
 .btn-launch{
   --bs-btn-bg:var(--orange);
+  --bs-btn-hover-bg: #e2953c;
 }
+.card{--bs-card-border-color: rgba(255, 255, 255, 0);}
