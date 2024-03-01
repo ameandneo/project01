@@ -1,0 +1,175 @@
+.breadcrumb,
+.breadcrumb * {
+  box-sizing: border-box;
+}
+.breadcrumb {
+  height: 52.5px;
+  position: static;
+}
+.menu {
+  width: 335px;
+  height: 39.5px;
+  position: static;
+}
+.input-with-addons {
+  background: #0f1535;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: rgba(226, 232, 240, 0.3);
+  border-width: 0.5px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  right: 9.56%;
+  left: 80.08%;
+  width: 10.36%;
+  bottom: 96.25%;
+  top: 1.36%;
+  height: 2.39%;
+  overflow: hidden;
+}
+.auto-added-frame {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 37.5px;
+  position: relative;
+  overflow: hidden;
+}
+.addon {
+  padding: 4px 6px 4px 6px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.icon {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  overflow: visible;
+}
+.input-field-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.type-here {
+  color: var(--gray-gray-400, #a0aec0);
+  text-align: left;
+  font-family: "PlusJakartaDisplay-Regular", sans-serif;
+  font-size: 12.000000953674316px;
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+}
+.min-width {
+  padding: 0px 74px 0px 74px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.content {
+  flex-shrink: 0;
+  width: 0.01px;
+  height: 0.01px;
+  position: relative;
+}
+.list-item-default {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 58px;
+  height: 16px;
+  position: absolute;
+  left: 1754.5px;
+  top: 34px;
+  overflow: hidden;
+}
+.ion-icon-p-person-default {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+}
+.sign-in {
+  color: var(--gray-gray-500, #718096);
+  text-align: left;
+  font-family: "PlusJakartaDisplay-Regular", sans-serif;
+  font-size: 12.000000953674316px;
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ion-icon-s-settings-sharp {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 1831.5px;
+  top: 36.5px;
+  overflow: visible;
+}
+.ion-icon-n-notifications-default {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 1860.5px;
+  top: 36.5px;
+  overflow: visible;
+}
+.text {
+  width: 113.5px;
+  height: 38px;
+  position: static;
+}
+.dashboard {
+  color: #ffffff;
+  text-align: left;
+  font-family: "PlusJakartaDisplay-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 140%;
+  font-weight: 500;
+  position: absolute;
+  left: 314.5px;
+  top: 55px;
+}
+.breadcrumb-item-previous {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 113px;
+  position: absolute;
+  left: 315px;
+  top: 37px;
+}
