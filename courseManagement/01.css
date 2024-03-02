@@ -1,7 +1,15 @@
 /* cover */
-:root{
---orange:#FFA842;
---green:#1C8F3C;
+:root {
+  --orange: #ffa842;
+  --green: #1c8f3c;
+  --blue: #343c6a;
+  --bs-heading-color: #343c6a;
+  --bs-navbar-brand-color: #343c6a;
+  --bs-danger-rgb: 255, 0, 51;
+ 
+}
+.table {
+  --bs-table-color: #343c6a;
 }
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
@@ -19,14 +27,30 @@
 }
 .nav-link {
   color: #b1b1b1;
-} 
+}
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: unset;
+}
+.btn {
+  --bs-btn-border-radius: 3.125rem;
+}
 /*  */
 .portrait {
   width: 60px;
   height: 60px;
   background-color: var(--bs-nav-pills-link-active-bg);
   font-size: 30px;
-
 }
 .header-btn {
   width: 60px;
@@ -45,7 +69,7 @@
   font-weight: bold;
 }
 *:lang(en) {
-  font-family: " var(--bs-body-font-family)", "Open+Sans", "Noto+Sans+Mono";
+  font-family: "Open+Sans", "Noto+Sans+Mono";
 }
 .sidebar li {
   font-size: 20px;
@@ -71,11 +95,11 @@ body {
   top: 0;
   width: 100%;
 }
-header{
+header {
   height: 100px;
   width: 100%;
 }
-#banner{
+#banner {
   height: 150px;
   width: 100%;
 }
@@ -89,9 +113,14 @@ header{
 #searchForm {
   font-size: 20px;
 }
-.page-nav{height: 38px;}
-.btn-launch{
-  --bs-btn-bg:var(--orange);
-  --bs-btn-hover-bg: #e2953c;
+.page-nav {
+  height: 38px;
 }
-.card{--bs-card-border-color: rgba(255, 255, 255, 0);}
+.btn-launch {
+  --bs-btn-bg: var(--bs-yellow);
+  --bs-btn-hover-bg: var(--bs-orange);
+  color: white;
+}
+.card {
+  --bs-card-border-color: rgba(255, 255, 255, 0);
+}

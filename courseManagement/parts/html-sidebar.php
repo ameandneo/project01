@@ -15,7 +15,7 @@
    <nav class="d-flex align-items-start sidebar">
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <li>
-        <a class="d-flex flex-column navbar-brand fs-3 mb-5" href="#"><img src="../logo_ltc.svg" alt="" class="me-2" />後台管理系統</a>
+        <a class="d-flex flex-column navbar-brand fs-3 mb-5" href="#"><img src="" alt="" class="me-2" />後台管理系統</a>
       </li>
       <li class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa-solid fa-file-circle-plus"></i>
         新增課程
