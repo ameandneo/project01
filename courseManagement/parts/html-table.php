@@ -54,8 +54,11 @@ ORDER BY c1.courseID ASC LIMIT " . ($page - 1) * $perPage . ",$perPage"))->fetch
           <td><?= $r['userName'] ?></td>
           <td><?= $r['price'] ?></td>
           <td><?= $r['approverID'] ? ($r['available'] ? '<span class="text-success">已上架</span>' : '<span class="text-body-tertiary">已下架</span>') : '<span class="text-danger">未審核</span>' ?></td>
-          <td><?= $r['promotionName'] ? '<span class="text-warning">'.$r["promotionName"].'</span>':"-" ?></td>
-          <td><?= $r['courseID'] ?></td>
+          <td><?= $r['promotionName'] ? '<span class="text-warning">' . $r["promotionName"] . '</span>' : "-" ?></td>
+          <td><?php
+              $soldRows = $pdo->query(sprintf("SELECT COUNT(*) FROM payment WHERE courseID =" . $r['courseID'] . ";"))->fetch(PDO::FETCH_NUM)[0]; #總筆數
+              echo $soldRows;
+              ?></td>
           <td><button class="btn <?= $r['approverID'] ? ($r['available'] ? 'btn-secondary' : 'btn-launch') : 'btn-success' ?>">
               <?= $r['approverID'] ? ($r['available'] ? '<i class="fa-solid fa-arrow-turn-down me-2"></i>下架' : '<i class="fa-solid fa-arrow-up-from-bracket me-2"></i>上架') : '<i class="fa-solid fa-check me-2"></i>核准' ?></button></td>
           <td><button class="btn btn-primary"><i class="fa-solid fa-pen-to-square me-2 "></i>查看</button></td>
