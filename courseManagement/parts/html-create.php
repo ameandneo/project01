@@ -1,4 +1,5 @@
 <div class="container-right">
+<h4>新增課程</h4>
     <form name="createCourse" onsubmit="sendData(event)" method="post">
         <div class="mb-3">
             <label for="title" class="form-label">標題</label>

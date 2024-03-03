@@ -36,7 +36,8 @@
                     <td><button class="btn <?= $r['approverID'] ? ($r['available'] ? 'btn-secondary' : 'btn-launch') : 'btn-success' ?>">
                             <?= $r['approverID'] ? ($r['available'] ? '<i class="fa-solid fa-arrow-turn-down me-2"></i>下架' : '<i class="fa-solid fa-arrow-up-from-bracket me-2"></i>上架') : '<i class="fa-solid fa-check me-2"></i>核准' ?></button></td>
                     <!-- 編輯按鈕 -->
-                    <td><button class="btn btn-primary" href=""><i class="fa-solid fa-pen-to-square me-2 "></i>編輯</button></td>
+                    <td><a class="btn btn-primary"
+                    href="edit.php?courseID=<?=$r['courseID']?> "><i class="fa-solid fa-pen-to-square me-2 "></i>編輯</a></td>
 
                 </tr>
                 <tr>
