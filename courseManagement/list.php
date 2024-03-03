@@ -1,5 +1,6 @@
 <?php
-$title = '搜尋結果';
+$title = '所有課程';
+$pageName = 'list';
 include __DIR__ . '/parts/PDOconnect.php';
 // // 第一次$page為1
 $page  = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -19,13 +20,13 @@ $totalPages = ceil($totalRows / $perPage); #總頁數
 
 if ($totalRows > 0) {
     if ($page > $totalPages) {
-        header('Location: ?page=' .$totalPages); //若page大於200就跳到page=200，然後結束
+        header('Location: ?page=' . $totalPages); //若page大於200就跳到page=200，然後結束
         exit;
     }
 }
 
 // 每頁的表格內容
-$rows = $pdo->query(sprintf("SELECT c1.courseID,title,intro,syllabus,teacherSN,courseImg,approverID,available,price,userName,promotionName,p1.percentage FROM course c1 join user u1 on c1.teacherSN=u1.userID left join promotion p1 on c1.courseID= p1.courseID where promotionSN is null || CURRENT_DATE() BETWEEN whenStarted AND whenEnded ORDER BY c1.courseID ASC LIMIT " .($page - 1)* $perPage .",$perPage"))->fetchAll(PDO::FETCH_ASSOC);
+$rows = $pdo->query(sprintf("SELECT c1.courseID,title,intro,syllabus,teacherSN,courseImg,approverID,available,price,userName,promotionName,p1.percentage FROM course c1 join user u1 on c1.teacherSN=u1.userID left join promotion p1 on c1.courseID= p1.courseID where promotionSN is null || CURRENT_DATE() BETWEEN whenStarted AND whenEnded ORDER BY c1.courseID ASC LIMIT " . ($page - 1) * $perPage . ",$perPage"))->fetchAll(PDO::FETCH_ASSOC);
 
 // 促銷狀態:SELECT * FROM course c1 join user u1 on c1.teacherSN=u1.userID left join promotion p1 on c1.courseID= p1.courseID where promotionSN is null || CURRENT_DATE() BETWEEN whenStarted AND whenEnded;
 
@@ -43,7 +44,7 @@ include __DIR__ . '/parts/html-sidebar.php'; ?>
 <div class="container-right">
     <h4>課程列表</h4>
     <caption>
-        <h5>共<?= $totalRows ?>筆/每頁顯示<?= $perPage ?>筆<?= $totalPages?></h5>
+        <h5>共<?= $totalRows ?>筆/每頁顯示<?= $perPage ?>筆</h5>
     </caption>
     <table class="table table-hover caption-top table-sm ">
         <thead class="table-light">
@@ -75,7 +76,7 @@ include __DIR__ . '/parts/html-sidebar.php'; ?>
                     <td><button class="btn <?= $r['approverID'] ? ($r['available'] ? 'btn-secondary' : 'btn-launch') : 'btn-success' ?>">
                             <?= $r['approverID'] ? ($r['available'] ? '<i class="fa-solid fa-arrow-turn-down me-2"></i>下架' : '<i class="fa-solid fa-arrow-up-from-bracket me-2"></i>上架') : '<i class="fa-solid fa-check me-2"></i>核准' ?></button></td>
                     <!-- 編輯按鈕 -->
-                    <td><button class="btn btn-primary" href=""><i class="fa-solid fa-pen-to-square me-2 "></i></button></td>
+                    <td><button class="btn btn-primary" href=""><i class="fa-solid fa-pen-to-square me-2 "></i>編輯</button></td>
 
                 </tr>
                 <tr>
@@ -84,8 +85,9 @@ include __DIR__ . '/parts/html-sidebar.php'; ?>
     </table>
     <!-- 選頁 -->
     <nav class="d-flex gap-3 page-nav align-items-center">
-        <button class="btn btn-primary rounded-5 <?= $page!==1?:'disabled';
-        //若已經是最前頁就關閉按鈕?>">
+        <button class="btn btn-primary rounded-5 <?= $page !== 1 ?: 'disabled';
+                                                    //若已經是最前頁就關閉按鈕
+                                                    ?>">
             <a class="page-link" href="?page=<?= $page - 1 ?>">上一頁</a>
         </button>
         <ul class="pagination -sm m-0">
@@ -101,9 +103,10 @@ include __DIR__ . '/parts/html-sidebar.php'; ?>
         </ul>
 
         <button class="btn btn-primary rounded-5 
-        <?= $page == $totalPages?'disabled':'';?>">
+        <?= $page == $totalPages ? 'disabled' : ''; ?>">
             <a class="page-link " href="?page=<?= $page + 1 ?>">下一頁</a>
         </button>
+        <span>共<?= $totalPages ?>頁 </span>
     </nav>
 </div>
 <!-- log看看 -->

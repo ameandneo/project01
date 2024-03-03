@@ -1,3 +1,7 @@
+<?php if (!isset($pageName)) {
+  $pageName = '';
+}
+?>
 <!DOCTYPE html>
 <html lang="zh-hant">
 
@@ -17,10 +21,10 @@
       <li>
         <a class="d-flex flex-column navbar-brand fs-3 mb-5" href="#"><img src="" alt="" class="me-2" />後台管理系統</a>
       </li>
-      <li class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa-solid fa-file-circle-plus"></i>
+      <a class="nav-link <?= $pageName == 'create' ? 'active' : '' ?>" href="./create.php"><i class="fa-solid fa-file-circle-plus"></i>
         新增課程
-      </li>
-      <li class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa-solid fa-file-circle-plus"></i>
+      </a>
+      <li class="nav-link" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa-solid fa-file-circle-plus"></i>
         我創建的課程
       </li>
       <li class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
@@ -51,10 +55,10 @@
         <i class="fa-solid fa-tag"></i>
         修改tag
       </li>
-      <li class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+      <a href="./list.php" class="nav-link <?= $pageName == 'list' ? 'active' : '' ?> ">
         <i class="fa-solid fa-book"></i>
         所有上架課程
-      </li>
+      </a>
     </div>
 
   </nav>
