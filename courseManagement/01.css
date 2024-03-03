@@ -3,6 +3,7 @@
   --orange: #ffa842;
   --green: #1c8f3c;
   --blue: #343c6a;
+  --light-blue:#f5f7fa;
   --bs-heading-color: #343c6a;
   --bs-navbar-brand-color: #343c6a;
   --bs-danger-rgb: 255, 0, 51;
@@ -10,6 +11,9 @@
 }
 .table {
   --bs-table-color: #343c6a;
+}
+.table-light{
+  --bs-table-bg: var(var(--light-blue))
 }
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
@@ -77,7 +81,7 @@ h6 {
 }
 
 body {
-  background-color: #f5f7fa;
+  background-color:var(--light-blue);
 }
 .sidebar {
   background-color: rgb(255, 255, 255);

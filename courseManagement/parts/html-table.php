@@ -17,7 +17,7 @@ $total_pages = ceil($totalRows / $perPage); #總頁數
 
 
 // 每頁的表格內容
-$rows = $pdo->query(sprintf("SELECT c1.courseID,title,intro,syllabus,teacherSN,courseImg,approverID,available,price,userName,promotionName FROM course c1 join user u1 on c1.teacherSN=u1.userID left join promotion p1 on c1.courseID= p1.courseID where promotionSN is null || CURRENT_DATE() BETWEEN whenStarted AND whenEnded;
+$rows = $pdo->query(sprintf("SELECT c1.courseID,title,intro,syllabus,teacherSN,courseImg,approverID,available,price,userName,promotionName,p1.percentage FROM course c1 join user u1 on c1.teacherSN=u1.userID left join promotion p1 on c1.courseID= p1.courseID where promotionSN is null || CURRENT_DATE() BETWEEN whenStarted AND whenEnded;
 ORDER BY c1.courseID ASC LIMIT " . ($page - 1) * $perPage . ",$perPage"))->fetchAll(PDO::FETCH_ASSOC);
 
 // 促銷狀態:SELECT * FROM course c1 join user u1 on c1.teacherSN=u1.userID left join promotion p1 on c1.courseID= p1.courseID where promotionSN is null || CURRENT_DATE() BETWEEN whenStarted AND whenEnded;
@@ -33,7 +33,7 @@ ORDER BY c1.courseID ASC LIMIT " . ($page - 1) * $perPage . ",$perPage"))->fetch
     <h5>共10筆/顯示5筆</h5>
   </caption>
   <table class="table table-hover caption-top table-sm ">
-    <thead>
+    <thead class="table-light">
       <tr>
         <th scope="col" style="max-width: fit-content;">課程編號</th>
         <th scope="col">標題</th>
@@ -52,7 +52,7 @@ ORDER BY c1.courseID ASC LIMIT " . ($page - 1) * $perPage . ",$perPage"))->fetch
           <th scope="row"><?= $r['courseID'] ?></th>
           <td><?= $r['title'] ?></td>
           <td><?= $r['userName'] ?></td>
-          <td><?= $r['price'] ?></td>
+          <td><?= $r['promotionName']?'<span class="text-decoration-line-through">'.$r['price'].'</span>　<span class="text-warning">'.$r['price']*$r['percentage']/100 .'</span>':$r['price'] ?></td>
           <td><?= $r['approverID'] ? ($r['available'] ? '<span class="text-success">已上架</span>' : '<span class="text-body-tertiary">已下架</span>') : '<span class="text-danger">未審核</span>' ?></td>
           <td><?= $r['promotionName'] ? '<span class="text-warning">' . $r["promotionName"] . '</span>' : "-" ?></td>
           <td><?php
