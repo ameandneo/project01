@@ -34,10 +34,10 @@ if (!empty($_FILES) and !empty($_FILES['imgFile']) and $_FILES['imgFile']['error
 //開始寫進資料庫
 // 避免SQL injection: 先prepare再execute，把單引號便跳脫字元
 $sql =
-    "INSERT INTO `course`(`title`, `intro`, `syllabus`, `teacherSN`, `courseImg`, `price`,`whenApply`,whenApproved) 
+    "INSERT INTO `course`(`title`, `intro`, `syllabus`, `teacherSN`, `courseImg`, `price`,`whenApply`,whenApproved,approverID ) 
 VALUES (
 ?,?,?,?,?,?,
-NOW(),NOW()
+NOW(),NOW(),'2'
 )";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
@@ -52,4 +52,5 @@ $output['success'] = '成功的筆數' . $stmt->rowCount();
 
 
 header('Content-Type: application/json');
+// 防止亂碼
 echo json_encode($output, JSON_UNESCAPED_UNICODE);

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><?= isset($title)?$title:'首頁'?></title>
+  <title><?= isset($title) ? $title : '首頁' ?></title>
   <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
 
   <script src="https://kit.fontawesome.com/b0405be273.js" crossorigin="anonymous"></script>
@@ -12,7 +12,7 @@
 </head>
 
 <body>
-   <nav class="d-flex align-items-start sidebar">
+  <nav class="d-flex align-items-start sidebar">
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <li>
         <a class="d-flex flex-column navbar-brand fs-3 mb-5" href="#"><img src="" alt="" class="me-2" />後台管理系統</a>
@@ -54,7 +54,8 @@
       </li>
     </div>
 
-  </nav><section id="header">
+  </nav>
+  <section id="header">
     <div class="container-right">
       <header class="d-flex flex-row justify-content-between align-items-center">
         <a class="navbar-brand fs-3" href="#">課程管理</a>
@@ -79,7 +80,6 @@
       </header>
     </div>
   </section>
-<div id="banner">
-  
-</div>
- 
+  <div id="banner">
+
+  </div>

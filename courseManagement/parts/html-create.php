@@ -1,5 +1,5 @@
 <div class="container-right">
-    <form name="createCourse" onsubmit="sendData(event)">
+    <form name="createCourse" onsubmit="sendData(event)" method="post">
         <div class="mb-3">
             <label for="title" class="form-label">標題</label>
             <input type="text" class="form-control" id="title" name="title">
@@ -61,7 +61,6 @@
             .then((result) => {
                 if (result.success) {
                     alert('已新增課程');
-                    myimg.src = "./../uploads/" + result.file; //設定空的img的src屬性
                     
                 } else {
                     alert("新增失敗");
