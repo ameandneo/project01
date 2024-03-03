@@ -1,6 +1,5 @@
 <?php
 include __DIR__ . '/../parts/PDOconnect.php';
-
 $dir = __DIR__ . '/../uploads/'; # 存放檔案的資料夾
 $exts = [   # 檔案類型的篩選 給附檔名
     'image/jpeg' => '.jpg',
@@ -11,7 +10,7 @@ $exts = [   # 檔案類型的篩選 給附檔名
 #先寫好要回應給用戶端的東西格式
 $output = [
     'success' => false,
-    'file' => '', //成功後儲存的檔案名稱
+    'file'=>'', //成功後儲存的檔案名稱
     'postData' => $_POST, #除錯用
     'error' => '',
     'code' => 0,
@@ -26,27 +25,35 @@ if (!empty($_FILES) and !empty($_FILES['imgFile']) and $_FILES['imgFile']['error
         $ext = $exts[$type]; # 副檔名
         $f = sha1($_FILES['imgFile']['name'] . uniqid()); # 隨機的主檔名
         if (move_uploaded_file($_FILES['imgFile']['tmp_name'], $dir . $f . $ext)) {
-            $output['success'] = true;
-            $output['file'] = $f . $ext;
+            // 確定新檔案上船完成後，把舊的圖片刪掉
+            $file_path = $_POST['courseImg'];
+            if (unlink($file_path)) {
+                $output['file'] = $f . $ext;
+            }
         }
     }
 }
+//準備寫進資料庫
+
 //開始寫進資料庫
 // 避免SQL injection: 先prepare再execute，把單引號便跳脫字元
-$sql =
-    "INSERT INTO `course`(`title`, `intro`, `syllabus`, `teacherSN`, `courseImg`, `price`,`whenApply`,whenApproved,approverID ) 
-VALUES (
-?,?,?,?,?,?,
-NOW(),NOW(),'2'
-)";
+$sql = "UPDATE `course` SET
+`title`=?,
+`intro`=?,
+`syllabus`=?,
+`teacherSN`=?,
+`courseImg`=?,`price`=? WHERE `courseID`=?";
+
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
     $_POST['title'],
     $_POST['intro'],
     $_POST['syllabus'],
     $_POST['userID'],
-    $f . $ext,
+    $output['file']?($f . $ext):$_POST['courseImg'],
+    // 如果有新的圖片就改檔名
     $_POST['price'],
+    $_POST['courseID'],
 ]);
 $output['success'] = '成功的筆數' . $stmt->rowCount();
 

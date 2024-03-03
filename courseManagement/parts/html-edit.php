@@ -16,7 +16,7 @@ if (empty($r)) { //如果亂給參數進來的就跳回list頁
         <div class="mb-3">
 
             <label for="courseID" class="form-label">課程編號</label>
-            <input type="text" class="form-control disabled readonly" id="courseID" name="courseID" value="<?= $r['courseID'] ?>">
+            <input type="text" class="form-control readonly" id="courseID" name="courseID" value="<?= $r['courseID'] ?>">
 
         </div>
         <div class="mb-3">
@@ -54,6 +54,8 @@ if (empty($r)) { //如果亂給參數進來的就跳回list頁
 
             <!-- 原本的img--> 
             <img src="./uploads/<?=$r['courseImg']?>" alt="" id="myimg" width="300" />
+             <!-- 一個隱藏的input來放原始圖片檔名 -->
+            <input name="courseImg" type="text" hidden value="<?=$r['courseImg']?>"/>
         </div>
         <button type="submit" class="btn btn-primary">更改</button>
     </form>
@@ -65,15 +67,15 @@ if (empty($r)) { //如果亂給參數進來的就跳回list頁
     function sendData(e) {
         e.preventDefault();
         // 防止送出表單重整
-        // log看一下createCourse表單送出的資料
-        const createCourseFD = new FormData(document.createCourse);
-        for (let i of createCourseFD.entries()) {
+        // log看一下editCourse表單送出的資料
+        const editCourseFD = new FormData(document.editCourse);
+        for (let i of editCourseFD.entries()) {
             console.log(i);
         };
         //發ajax
         fetch('./api/editCourse.php', {
                 method: "POST",
-                body: createCourseFD,
+                body: editCourseFD,
             })
             .then((r) => r.json())
             .then((result) => {
