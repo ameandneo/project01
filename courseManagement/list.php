@@ -8,6 +8,8 @@ if ($page < 1) {
     header('Location: ?page=1');
     exit;
 }
+
+
 $total_rows_sql = "SELECT count(1) from course";
 $total_rows_stmt = $pdo->query("$total_rows_sql");
 $totalRows = $total_rows_stmt->fetch(PDO::FETCH_NUM)[0]; //得到總筆數
