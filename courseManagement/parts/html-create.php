@@ -1,47 +1,51 @@
 <div class="container-right">
-<h4>新增課程</h4>
-    <form name="createCourse" onsubmit="sendData(event)" method="post">
-        <div class="mb-3">
-            <label for="title" class="form-label">標題</label>
+    <h4>新增課程</h4>
+    <form class="createCourse rounded-5" name="createCourse" onsubmit="sendData(event)" method="post">
+        <div class="mb-3 hstack">
+            <label for="title" class="form-label me-auto">標題</label>
             <input type="text" class="form-control" id="title" name="title">
-            <div id="emailHelp" class="form-text text-danger">必填</div>
+            <div id="Help" class="form-text text-danger"><i class="fa-solid fa-circle-exclamation"></i>必填</div>
         </div>
-        <div class="mb-3">
-            <label for="intro" class="form-label">簡介</label>
-            <input type="text" class="form-control" id="intro" name="intro">
+        <div class="mb-3 hstack">
+            <label for="intro" class="form-label me-auto">簡介</label>
+            <textarea type="text" class="form-control" id="intro" name="intro" cols="30" rows="10"></textarea>
         </div>
-        <div class="mb-3">
-            <label for="syllabus" class="form-label">課綱</label>
+        <div class="mb-3 hstack">
+            <label for="syllabus" class="form-label me-auto">課綱</label>
             <input type="text" class="form-control" id="syllabus" name="syllabus">
         </div>
-        <div class="mb-3">
-            <label for="price" class="form-label">價格</label>
+        <div class="mb-3 hstack">
+            <label for="price" class="form-label me-auto">價格</label>
             <input type="number" class="form-control" id="price" name="price">
         </div>
-
-        <select class="form-select" name="userID">
+        <div class="mb-3 hstack">
+            <label for="price" class="form-label me-auto">教師</label>
+            <select class="form-select" name="userID">
             <?php $allTeachers = $pdo->query('SELECT userName,userID FROM `user` WHERE isTeacher=1;')->fetchAll(PDO::FETCH_ASSOC); ?>
             <?php foreach ($allTeachers as $teacher) : ?>
                 <option value="<?= $teacher['userID'] ?>"> <?= $teacher['userName'] ?> </option>
             <?php endforeach; ?>
         </select>
+        </div>
 
-        <div class="mb-3">
-            <label for="formFile" class="form-label">圖片</label>
+       
+
+        <div class="mb-3 hstack">
+            <label for="formFile" class="form-label me-auto text-nowrap">圖片</label>
             <input class="form-control" type="file" id="formFile" accept="image/jpeg,image/png,image/webp" multiple="false" onchange="showTemp(event)" name="imgFile" />
             <!-- 接受的檔案類型 -->
-
-            <!-- 空的img-->
+        </div>
+        <div><!-- 空的img-->
             <img src="" alt="" id="myimg" width="300" />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">新增課程</button>
     </form>
 </div>
 <script>
     const allTeachers = <?= json_encode($allTeachers, JSON_UNESCAPED_UNICODE) ?>;
     console.log(allTeachers);
 
-    
+
 
     const myimg = document.querySelector("#myimg");
 
@@ -62,7 +66,7 @@
             .then((result) => {
                 if (result.success) {
                     alert('已新增課程');
-                    
+
                 } else {
                     alert("新增失敗");
                 }

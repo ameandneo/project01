@@ -14,7 +14,7 @@ $totalRows = $total_rows_stmt->fetch(PDO::FETCH_NUM)[0]; //得到總筆數
 
 
 // 一頁有幾筆資料
-$perPage = 5;
+$perPage = 10;
 $totalPages = ceil($totalRows / $perPage); #總頁數
 
 
