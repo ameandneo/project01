@@ -19,24 +19,24 @@
             <input type="number" class="form-control" id="price" name="price">
         </div>
         <div class="mb-3 hstack">
-            <label for="price" class="form-label me-auto">教師</label>
-            <select class="form-select" name="userID">
-            <?php $allTeachers = $pdo->query('SELECT userName,userID FROM `user` WHERE isTeacher=1;')->fetchAll(PDO::FETCH_ASSOC); ?>
-            <?php foreach ($allTeachers as $teacher) : ?>
-                <option value="<?= $teacher['userID'] ?>"> <?= $teacher['userName'] ?> </option>
-            <?php endforeach; ?>
-        </select>
+            <label for="teacherID" class="form-label me-auto">教師</label>
+            <select class="form-select" name="userID" id="teacherID">
+                <?php $allTeachers = $pdo->query('SELECT userName,userID FROM `user` WHERE isTeacher=1;')->fetchAll(PDO::FETCH_ASSOC); ?>
+                <?php foreach ($allTeachers as $teacher) : ?>
+                    <option value="<?= $teacher['userID'] ?>"> <?= $teacher['userName'] ?> </option>
+                <?php endforeach; ?>
+            </select>
         </div>
 
-       
+
 
         <div class="mb-3 hstack">
-            <label for="formFile" class="form-label me-auto text-nowrap">圖片</label>
-            <input class="form-control" type="file" id="formFile" accept="image/jpeg,image/png,image/webp" multiple="false" onchange="showTemp(event)" name="imgFile" />
+            <label for="formFile" class="hstack w-100">圖片<div class="form-control ms-auto">上傳圖片</div></label>
+            <input hidden class="form-control" type="file" id="formFile" accept="image/jpeg,image/png,image/webp" multiple="false" onchange="showTemp(event)" name="imgFile" />
             <!-- 接受的檔案類型 -->
         </div>
         <div><!-- 空的img-->
-            <img src="" alt="" id="myimg" width="300" />
+            <img src="" alt="" id="myimg" width="100%" />
         </div>
         <button type="submit" class="btn btn-primary">新增課程</button>
     </form>

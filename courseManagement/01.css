@@ -10,6 +10,7 @@
   --bs-border-width: 3px;
   /* --bs-border-color: #dee2e6; */
 }
+
 .form-control:focus {
  
   background-color:var(--bs-secondary-bg-subtle);
@@ -17,11 +18,17 @@
   outline: 0;
   box-shadow: none;
 }
+.form-control:hover {
+ 
+  background-color:var(--bs-gray-200);
+
+}
 .form-control{
   width: 90%;
   background-color:var(--bs-secondary-bg-subtle);
   border-radius: 30px;
   border: none;
+  font-weight: 900;
 }
 .form-select{
   width: 90%;
@@ -75,6 +82,7 @@ h6 {
   --bs-btn-border-radius: 3.125rem;
 }
 /*  */
+
 .portrait {
   width: 60px;
   height: 60px;
