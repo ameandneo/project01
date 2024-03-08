@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      padding: 100px 0;
+    }
+    .list {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+    }
+
+    .list-item {
+      width: 100%;
+      line-height: 40px;
+      background-image: linear-gradient(
+        to right top,
+        #004d7a,
+        #008793,
+        #00bf72,
+        #a8eb12
+      );
+      margin: 10px 0;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 2rem;
+    }
+    .list-item:hover {
+      cursor: pointer;
+    }
+    .moving {
+      background-image: none;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="list">
+        <div draggable="true" class="list-item">1</div>
+        <div draggable="true" class="list-item">2</div>
+        <div draggable="true" class="list-item">3</div>
+        <div draggable="true" class="list-item">4</div>
+        <div draggable="true" class="list-item">5</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const list = document.querySelector(".list");
+    let dragItem;
+
+    list.ondragstart = (e) => {
+      dragItem = e.target;
+      setTimeout(() => {
+        e.target.classList.add("moving");
+      }, 0);
+      console.log(e.target);
+    };
+    list.ondragover = (e) => {
+      e.preventDefault();
+      // 取消瀏覽器預設不可更改的dropEffect
+      e.dataTransfer.dropEffect = "move";
+    };
+    list.ondragenter = (e) => {
+      if (e.target === list || e.target === dragItem) {
+        return;
+      }
+      console.log(e.target);
+      console.log([...list.children].indexOf(e.target));
+      let targetIndex = [...list.children].indexOf(e.target);
+      let dragItemIndex = [...list.children].indexOf(dragItem);
+      if (targetIndex < dragItemIndex) {
+        console.log("up");
+        list.insertBefore(dragItem, e.target);
+      } else {
+        console.log("down");
+        list.insertBefore(dragItem, e.target.nextElementSibling);
+      }
+    };
+    list.ondragend = (e) => {
+      e.target.classList.remove("moving");
+    };
+  </script>
+</html>
