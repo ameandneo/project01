@@ -82,7 +82,9 @@ h6 {
   --bs-btn-border-radius: 3.125rem;
 }
 /*  */
-
+#pageNumber{
+  cursor: pointer !important;
+}
 .portrait {
   width: 60px;
   height: 60px;
