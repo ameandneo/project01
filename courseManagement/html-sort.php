@@ -13,24 +13,27 @@ include __DIR__ . '/parts/html-sidebar.php';
 
   <!-- 排序 -->
   <div class="hstack gap-3">
-    <div class="p-2 rounded-4 bg-white py-2 function-wrap">
-      <h5>共<span id="limitPerpage"></span>筆/每頁顯示<select name="limitPerpageSelect" id="limitPerpageSelect">
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-        </select>筆</h5>
+    <div class="p-2 rounded-4 bg-white py-2 function-wrap hstack">
+      <h5 class="m-0">共</h5>
+      <h5 id="totalRows" class="m-0"></h5>
+      <h5 class="text-nowrap m-0">筆/每頁顯示</h5><select class="form-select mx-2" name="limitPerpageSelect" id="limitPerpageSelect">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="20">20</option>
+      </select>
+      <h5 class="m-0">筆</h5>
+    </div>
+    <div class="p-2 rounded-4 bg-white py-2 function-wrap hstack justify-content-center">
+      <h5 class="m-0 text-nowrap">排序</h5>
+
+      <select name="orderSelect" id="orderSelect" class="form-select w-50">
+        <option value="courseID">id</option>
+        <option value="price">price</option>
+      </select>
+
     </div>
     <div class="p-2 rounded-4 bg-white py-2 function-wrap">
-      <h5>排序</h5>
-      <div class="container-right">
-        <select name="orderSelect" id="orderSelect">
-          <option value="courseID">id</option>
-          <option value="price">price</option>
-        </select>
-      </div>
-    </div>
-    <div class="p-2 rounded-4 bg-white py-2 function-wrap">
-      <h5>顯示方式</h5>
+      <h5 class="m-0">顯示方式</h5>
     </div>
   </div>
   <div class="table-wrap rounded-5">
@@ -87,7 +90,7 @@ include __DIR__ . '/parts/html-sidebar.php';
     <a class="btn btn-primary rounded-5" id="nextPage">
       <button class="page-link ">下一頁</button>
     </a>
-    <span>共 頁 </span>
+    <span>共<span id="totalPages"></span>頁</span>
   </nav>
 </div>
 <!-- JS -->
@@ -102,7 +105,8 @@ include __DIR__ . '/parts/html-sidebar.php';
   let otherLimit = 'otherLimit';
   let tbody = document.getElementById('tbody');
   let pageNumberUl = document.getElementById("pageNumber");
-
+  let totalPages = document.getElementById('totalPages');
+  let totalRows = document.getElementById('totalRows');
   // then要用的變數
   let rows;
   let courseState;
@@ -151,8 +155,8 @@ include __DIR__ . '/parts/html-sidebar.php';
               <td style="width: 120px;"> ${r['userName']} </td>
               <td style="width: 120px;"> ${r['price']}</td>
               <td class="text-center">${courseState}</td>
-              <td class="text-center">${r['promotionName']}</td>
-              <td class="text-end"></td>
+              <td class="text-center">${promotionState}</td>
+              <td class="text-end">${r['soldCount']}</td>
               <td style="width: 123px;" class="text-center"><button class="btn ${btnApprove}">${btnApproveContent}
                    </button></td>
               <!-- 編輯按鈕 -->
@@ -179,7 +183,8 @@ include __DIR__ . '/parts/html-sidebar.php';
         }
 
       }
-
+      totalPages.innerText = output['totalPages'];
+      totalRows.innerText = output['totalRows'];
     });
   }
 
@@ -207,9 +212,13 @@ include __DIR__ . '/parts/html-sidebar.php';
   };
   pageNumberUl.onclick = (e) => {
     console.log(Number(e.target.innerHTML));
-    currentPage=Number(e.target.innerHTML);
+    currentPage = Number(e.target.innerHTML);
     loadData(currentPage, orderValue, limitPerpage, otherLimit);
   }
+  // 首次加載立即執行
+  (function() {
+    loadData(currentPage, orderValue, limitPerpage, otherLimit);
+})();
 </script>
 <?php
 

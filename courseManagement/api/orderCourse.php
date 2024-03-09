@@ -4,10 +4,10 @@ include __DIR__ . '/../parts/PDOconnect.php';
 $postData = file_get_contents("php://input");
 $data = json_decode($postData, true);
 
-$page=$data['page'];
-$orderValue=$data['orderValue'];
-$limitPerpage=$data['limitPerpage'];
-$otherLimit=$data['otherLimit'];
+$page = $data['page'];
+$orderValue = $data['orderValue'];
+$limitPerpage = $data['limitPerpage'];
+$otherLimit = $data['otherLimit'];
 #先寫好要回應給用戶端的東西格式
 // $output = [
 //     'success' => false,
@@ -25,14 +25,23 @@ $output = [
 //得到總筆數
 $total_rows_sql = "SELECT count(1) FROM course c1 join user u1 on c1.teacherSN=u1.userID left join promotion p1 on c1.courseID= p1.courseID where promotionSN is null || CURRENT_DATE() BETWEEN whenStarted AND whenEnded";
 $total_rows_stmt = $pdo->query("$total_rows_sql");
-$totalRows = $total_rows_stmt->fetch(PDO::FETCH_NUM)[0]; 
+$totalRows = $total_rows_stmt->fetch(PDO::FETCH_NUM)[0];
 
 // 一頁有幾筆資料
-$totalPages = ceil($totalRows/$limitPerpage); #總頁數
+$totalPages = ceil($totalRows / $limitPerpage); #總頁數
 
 
 // 每頁的表格內容
 $rows = $pdo->query(sprintf("SELECT c1.courseID,title,intro,syllabus,teacherSN,courseImg,approverID,available,price,userName,promotionName,p1.percentage FROM course c1 join user u1 on c1.teacherSN=u1.userID left join promotion p1 on c1.courseID= p1.courseID where promotionSN is null || CURRENT_DATE() BETWEEN whenStarted AND whenEnded ORDER BY c1.$orderValue ASC LIMIT " . ($page - 1) * $limitPerpage . ",$limitPerpage"))->fetchAll(PDO::FETCH_ASSOC);
+
+
+foreach ($rows as &$r) { //在 foreach 循環中無法直接修改 $r 變量。因為 $r 是從 $rows 數組中循環出來的元素的副本，而不是原始數組。因此，對$r的更改不會影響到原始數組。但&$r可以
+    //售出數
+    $soldCount = $pdo->query(sprintf("SELECT COUNT(*) FROM payment WHERE courseID =" . $r['courseID'] . ";"))->fetch(PDO::FETCH_NUM)[0]; #總筆數
+    $r['soldCount'] = $soldCount;
+};
+
+
 
 $output['totalRows'] = $totalRows;
 $output['totalPages'] = $totalPages;
