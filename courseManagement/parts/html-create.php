@@ -7,6 +7,15 @@
             <div id="Help" class="form-text text-danger"><i class="fa-solid fa-circle-exclamation"></i>必填</div>
         </div>
         <div class="mb-3 hstack">
+            <label for="courseClassSN" class="form-label me-auto">類別</label>
+            <select class="form-select" name="courseClassSN" id="courseClassSN">
+                <?php $allCourseClass  = $pdo->query('SELECT * FROM `courseclass`;')->fetchAll(PDO::FETCH_ASSOC); ?>
+                <?php foreach ($allCourseClass as $CourseClass) : ?>
+                    <option value="<?= $CourseClass['courseClassSN'] ?>"> <?= $CourseClass['className'] ?> </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="mb-3 hstack">
             <label for="intro" class="form-label me-auto">簡介</label>
             <textarea type="text" class="form-control" id="intro" name="intro" cols="30" rows="10"></textarea>
         </div>

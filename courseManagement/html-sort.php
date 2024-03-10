@@ -110,7 +110,6 @@ include __DIR__ . '/parts/html-sidebar.php';
   // then要用的變數
   let rows;
   let courseState;
-  let promotionState;
   let btnApprove;
 
   let loadData = (page, orderValue, limitPerpage, otherLimit) => {
@@ -138,16 +137,15 @@ include __DIR__ . '/parts/html-sidebar.php';
       rows = output['rows'];
 
       for (let r of rows) {
-        if (r['available'] = 1) {
+        if (Number(r['available'])===1) {
           courseState = '<span class="text-success">已上架</span>';
         } else if (r['approverID']) {
           courseState = '<span class="text-body-tertiary">下架</span>';
         } else {
           courseState = '<span class="text-danger">未審核</span>'
         }
-        promotionState = (r['promotionName'] ? `<span class="text-warning">${r["promotionName"]}</span>` : "-");
-        btnApprove = (r['approverID'] ? (r['available'] ? 'btn-secondary' : 'btn-launch') : 'btn-success');
-        btnApproveContent = (r['approverID'] ? (r['available'] ? '<i class="fa-solid fa-arrow-turn-down me-2"></i>下架' : '<i class="fa-solid fa-arrow-up-from-bracket me-2"></i>上架') : '<i class="fa-solid fa-check me-2"></i>核准');
+        btnApprove = (r['approverID'] ? (Number(r['available'])===1 ? 'btn-secondary' : 'btn-launch') : 'btn-success');
+        btnApproveContent = (r['approverID'] ? (Number(r['available'])===1 ? '<i class="fa-solid fa-arrow-turn-down me-2"></i>下架' : '<i class="fa-solid fa-arrow-up-from-bracket me-2"></i>上架') : '<i class="fa-solid fa-check me-2"></i>核准');
         tbody.innerHTML +=
           `<tr>
               <th style="width: 87px;" scope="row"> ${r['courseID']}</th>
@@ -155,7 +153,7 @@ include __DIR__ . '/parts/html-sidebar.php';
               <td style="width: 120px;"> ${r['userName']} </td>
               <td style="width: 120px;"> ${r['price']}</td>
               <td class="text-center">${courseState}</td>
-              <td class="text-center">${promotionState}</td>
+              <td class="text-center">${r['promotionName']}</td>
               <td class="text-end">${r['soldCount']}</td>
               <td style="width: 123px;" class="text-center"><button class="btn ${btnApprove}">${btnApproveContent}
                    </button></td>

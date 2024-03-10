@@ -13,6 +13,30 @@ if (empty($r)) { //如果亂給參數進來的就跳回list頁
 <div class="container-right">
     <h4>編輯課程</h4>
     <form class="createCourse rounded-5" name="editCourse" onsubmit="sendData(event)" method="post">
+        <div class="mb-3  hstack gap-3">
+
+            <label for="courseID" class="form-label text-nowrap">狀態</label>
+            <input type="text" class="form-control w-25 ms-5 me-auto" readonly id="courseID" name="courseID" value="<?= $r['courseID'] ?>">
+            <div class="mb-3 hstack">
+                <label for="courseClassSN" class="form-label me-auto">類別</label>
+                <select class="form-select" name="courseClassSN" id="courseClassSN">
+                    <option value="<?= $r['courseClassSN'] ?>">
+                        <?php
+                        $CourseClass = $pdo->query('SELECT * FROM `courseclass`WHERE courseClassSN='.$r['courseClassSN'].';')->fetch();
+                        echo $CourseClass['className'] ?>
+                    </option>
+                    <?php $allCourseClass  = $pdo->query('SELECT * FROM `courseclass`;')->fetchAll(PDO::FETCH_ASSOC); ?>
+                    <?php foreach ($allCourseClass as $CourseClass) : ?>
+                        <option value="<?= $CourseClass['courseClassSN'] ?>"> <?= $CourseClass['className'] ?> </option>
+                    <?php endforeach; ?>
+                </select>
+                
+            </div>
+            <a class="btn btn-primary btn-lg" href="edit.php?courseID=<?= $r['courseID'] ?> "><i class="fa-solid fa-pen-to-square me-2 "></i>刪除</a>
+            <a class="btn btn-primary btn-lg" href="edit.php?courseID=<?= $r['courseID'] ?> "><i class="fa-solid fa-pen-to-square me-2 "></i>編輯</a>
+            <a class="btn btn-primary btn-lg" href="edit.php?courseID=<?= $r['courseID'] ?> "><i class="fa-solid fa-pen-to-square me-2 "></i>上下架</a>
+            <a class="btn btn-primary btn-lg" href="edit.php?courseID=<?= $r['courseID'] ?> "><i class="fa-solid fa-pen-to-square me-2 "></i>促銷</a>
+        </div>
         <div class="mb-3  hstack">
 
             <label for="courseID" class="form-label me-auto">課程編號</label>

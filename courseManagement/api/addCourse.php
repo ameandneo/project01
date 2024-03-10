@@ -34,9 +34,9 @@ if (!empty($_FILES) and !empty($_FILES['imgFile']) and $_FILES['imgFile']['error
 //開始寫進資料庫
 // 避免SQL injection: 先prepare再execute，把單引號便跳脫字元
 $sql =
-    "INSERT INTO `course`(`title`, `intro`, `syllabus`, `teacherSN`, `courseImg`, `price`,`whenApply`,whenApproved,approverID ) 
+    "INSERT INTO `course`(`title`, `intro`, `syllabus`, `teacherSN`, `courseImg`, `price`,`courseClassSN`,`whenApply`,whenApproved,approverID) 
 VALUES (
-?,?,?,?,?,?,
+?,?,?,?,?,?,?,
 NOW(),NOW(),'2'
 )";
 $stmt = $pdo->prepare($sql);
@@ -47,6 +47,7 @@ $stmt->execute([
     $_POST['userID'],
     $f . $ext,
     $_POST['price'],
+    $_POST['courseClassSN'],
 ]);
 $output['success'] = '成功的筆數' . $stmt->rowCount();
 
