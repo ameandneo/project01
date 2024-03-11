@@ -56,7 +56,7 @@
         <i class="fa-solid fa-tag"></i>
         修改tag
       </a>
-      <a href="./list.php" class="nav-link <?= $pageName == 'list' ? 'active' : '' ?> ">
+      <a href="./html-sort.php" class="nav-link <?= $pageName == 'list' ? 'active' : '' ?> ">
         <i class="fa-solid fa-book"></i>
         所有上架課程
       </a>

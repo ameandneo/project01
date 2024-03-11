@@ -34,11 +34,10 @@ if (!empty($_FILES) and !empty($_FILES['imgFile']) and $_FILES['imgFile']['error
 //開始寫進資料庫
 // 避免SQL injection: 先prepare再execute，把單引號便跳脫字元
 $sql =
-    "INSERT INTO `course`(`title`, `intro`, `syllabus`, `teacherSN`, `courseImg`, `price`,`courseClassSN`,`whenApply`,whenApproved,approverID) 
+    "INSERT INTO `course`(`title`, `intro`, `syllabus`, `teacherSN`, `courseImg`, `price`,`courseClassSN`,`whenApply`) 
 VALUES (
 ?,?,?,?,?,?,?,
-NOW(),NOW(),'2'
-)";
+NOW())";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
     $_POST['title'],

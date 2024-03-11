@@ -4,8 +4,25 @@ include __DIR__ . '/parts/PDOconnect.php';
 include __DIR__ . '/parts/html-sidebar.php';
 ?>
 
-
-=<!-- 表格內容 -->
+<!-- Modal -->
+<div class="modal fade" id="approveModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">是否核准課程</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        操作不可逆
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <a class="btn btn-primary" id="approveBtn" >核准</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 表格內容 -->
 
 
 <div class="container-right">
@@ -107,10 +124,13 @@ include __DIR__ . '/parts/html-sidebar.php';
   let pageNumberUl = document.getElementById("pageNumber");
   let totalPages = document.getElementById('totalPages');
   let totalRows = document.getElementById('totalRows');
+  let approveModal = document.getElementById('approveModal');
+  let approveBtn = document.getElementById('approveBtn');
   // then要用的變數
   let rows;
   let courseState;
   let btnApprove;
+  let modalTarget;
 
   let loadData = (page, orderValue, limitPerpage, otherLimit) => {
     let data = {
@@ -137,15 +157,16 @@ include __DIR__ . '/parts/html-sidebar.php';
       rows = output['rows'];
 
       for (let r of rows) {
-        if (Number(r['available'])===1) {
+        if (Number(r['available']) === 1) {
           courseState = '<span class="text-success">已上架</span>';
         } else if (r['approverID']) {
-          courseState = '<span class="text-body-tertiary">下架</span>';
+          courseState = '<span class="text-body-tertiary">未上架</span>';
         } else {
           courseState = '<span class="text-danger">未審核</span>'
         }
-        btnApprove = (r['approverID'] ? (Number(r['available'])===1 ? 'btn-secondary' : 'btn-launch') : 'btn-success');
-        btnApproveContent = (r['approverID'] ? (Number(r['available'])===1 ? '<i class="fa-solid fa-arrow-turn-down me-2"></i>下架' : '<i class="fa-solid fa-arrow-up-from-bracket me-2"></i>上架') : '<i class="fa-solid fa-check me-2"></i>核准');
+        btnApprove = (r['approverID'] ? (Number(r['available']) === 1 ? 'btn-secondary' : 'btn-launch') : 'btn-success');
+        btnApproveContent = (r['approverID'] ? (Number(r['available']) === 1 ? '<i class="fa-solid fa-arrow-turn-down me-2"></i>下架' : '<i class="fa-solid fa-arrow-up-from-bracket me-2"></i>上架') : '<i class="fa-solid fa-check me-2"></i>核准');
+        functionHref = (r['approverID'] ? (Number(r['available']) === 1 ? '#removeModal' : '#launchModal') : ` approveCourse(${r['courseID']})`);
         tbody.innerHTML +=
           `<tr>
               <th style="width: 87px;" scope="row"> ${r['courseID']}</th>
@@ -155,11 +176,11 @@ include __DIR__ . '/parts/html-sidebar.php';
               <td class="text-center">${courseState}</td>
               <td class="text-center">${r['promotionName']}</td>
               <td class="text-end">${r['soldCount']}</td>
-              <td style="width: 123px;" class="text-center"><button class="btn ${btnApprove}">${btnApproveContent}
-                   </button></td>
+              <td style="width: 123px;" class="text-center"><a class="btn ${btnApprove}" data-bs-toggle="modal" data-bs-target="#approveModal" onclick= "javascript:${functionHref}" >${btnApproveContent}
+                   </a></td>
               <!-- 編輯按鈕 -->
               <td style="width: 123px;" class="text-center"><a class="btn btn-primary" href="edit.php?courseID= ${r['courseID']}"><i class="fa-solid fa-pen-to-square me-2 "></i>編輯</a></td>
-            </tr>`
+            </tr>`;
       }
       if (currentPage === 1) {
         previousPageBtn.classList.add('disabled')
@@ -216,7 +237,13 @@ include __DIR__ . '/parts/html-sidebar.php';
   // 首次加載立即執行
   (function() {
     loadData(currentPage, orderValue, limitPerpage, otherLimit);
-})();
+  })();
+
+  function approveCourse(id){
+    approveBtn.href=`api/approve.php?courseID=${id}`;
+    console.log(id);
+    //跳轉到approve頁面
+  }
 </script>
 <?php
 
