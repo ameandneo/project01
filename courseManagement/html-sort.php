@@ -9,15 +9,15 @@ include __DIR__ . '/parts/html-sidebar.php';
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalTitle">是否核准課程</h1>
+        <h1 class="modal-title fs-5" id="modalTitle"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body" id="modalBody">
-        操作不可逆
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-        <a class="btn btn-primary" id="approveBtn">核准</a>
+        <a class="btn btn-primary" id="approveBtn"></a>
       </div>
     </div>
   </div>
@@ -244,20 +244,20 @@ include __DIR__ . '/parts/html-sidebar.php';
     console.log(approver);
     console.log(id);
     if (!approver) {
-      approveBtn.href = `api/approve.php?courseID=${id}`;//跳轉到approve頁面
+      approveBtn.href = `api/approve.php?courseID=${id}&currentPage=${currentPage}&orderValue=${orderValue}&limitPerpage=${limitPerpage}`;//跳轉到approve頁面
       modalTitle.innerHTML = '是否核准課程'
       modalBody.innerHTML = '操作不可逆'
-      approveBtn.href = '核准';
+      approveBtn.innerHTML = '核准';
     } else if (available) {
-      approveBtn.href = `api/launch.php?courseID=${id}`;
+      approveBtn.href = `api/launch.php?courseID=${id}&currentPage=${currentPage}&orderValue=${orderValue}&limitPerpage=${limitPerpage}`;
       modalTitle.innerHTML = '是否下架課程'
       modalBody.innerHTML = '下架課程'
-      approveBtn.href = '下架';
+      approveBtn.innerHTML = '下架';
     } else {
-      approveBtn.href = `api/launch.php?courseID=${id}`;
+      approveBtn.href = `api/launch.php?courseID=${id}&currentPage=${currentPage}&orderValue=${orderValue}&limitPerpage=${limitPerpage}`;
       modalTitle.innerHTML = '是否上架課程'
       modalBody.innerHTML = '上架課程'
-      approveBtn.href = '上架';
+      approveBtn.innerHTML = '上架';
     }
     
   }
