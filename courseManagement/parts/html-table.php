@@ -68,7 +68,7 @@
                             <td style="width: 123px;" class="text-center"><a class="btn btn-primary" href="edit.php?courseID=<?= $r['courseID'] ?> "><i class="fa-solid fa-pen-to-square me-2 "></i>編輯</a></td>
 
                         </tr>
-                        <tr>
+                        
                         <?php endforeach; ?>
                 </tbody>
             </table>

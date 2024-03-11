@@ -9,15 +9,15 @@ include __DIR__ . '/parts/html-sidebar.php';
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5">是否核准課程</h1>
+        <h1 class="modal-title fs-5" id="modalTitle">是否核准課程</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="modalBody">
         操作不可逆
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-        <a class="btn btn-primary" id="approveBtn" >核准</a>
+        <a class="btn btn-primary" id="approveBtn">核准</a>
       </div>
     </div>
   </div>
@@ -126,11 +126,13 @@ include __DIR__ . '/parts/html-sidebar.php';
   let totalRows = document.getElementById('totalRows');
   let approveModal = document.getElementById('approveModal');
   let approveBtn = document.getElementById('approveBtn');
+  let modalTitle = document.getElementById('modalTitle');
+  let modalBody = document.getElementById('modalBody');
   // then要用的變數
   let rows;
   let courseState;
   let btnApprove;
-  let modalTarget;
+
 
   let loadData = (page, orderValue, limitPerpage, otherLimit) => {
     let data = {
@@ -166,7 +168,6 @@ include __DIR__ . '/parts/html-sidebar.php';
         }
         btnApprove = (r['approverID'] ? (Number(r['available']) === 1 ? 'btn-secondary' : 'btn-launch') : 'btn-success');
         btnApproveContent = (r['approverID'] ? (Number(r['available']) === 1 ? '<i class="fa-solid fa-arrow-turn-down me-2"></i>下架' : '<i class="fa-solid fa-arrow-up-from-bracket me-2"></i>上架') : '<i class="fa-solid fa-check me-2"></i>核准');
-        functionHref = (r['approverID'] ? (Number(r['available']) === 1 ? '#removeModal' : '#launchModal') : ` approveCourse(${r['courseID']})`);
         tbody.innerHTML +=
           `<tr>
               <th style="width: 87px;" scope="row"> ${r['courseID']}</th>
@@ -176,7 +177,7 @@ include __DIR__ . '/parts/html-sidebar.php';
               <td class="text-center">${courseState}</td>
               <td class="text-center">${r['promotionName']}</td>
               <td class="text-end">${r['soldCount']}</td>
-              <td style="width: 123px;" class="text-center"><a class="btn ${btnApprove}" data-bs-toggle="modal" data-bs-target="#approveModal" onclick= "javascript:${functionHref}" >${btnApproveContent}
+              <td style="width: 123px;" class="text-center"><a class="btn ${btnApprove}" data-bs-toggle="modal" data-bs-target='#approveModal' onclick= "javascript:approveCourse(${r['courseID']},${r['approverID']},${r['available']})" >${btnApproveContent}
                    </a></td>
               <!-- 編輯按鈕 -->
               <td style="width: 123px;" class="text-center"><a class="btn btn-primary" href="edit.php?courseID= ${r['courseID']}"><i class="fa-solid fa-pen-to-square me-2 "></i>編輯</a></td>
@@ -239,10 +240,26 @@ include __DIR__ . '/parts/html-sidebar.php';
     loadData(currentPage, orderValue, limitPerpage, otherLimit);
   })();
 
-  function approveCourse(id){
-    approveBtn.href=`api/approve.php?courseID=${id}`;
+  function approveCourse(id, approver, available) {
+    console.log(approver);
     console.log(id);
-    //跳轉到approve頁面
+    if (!approver) {
+      approveBtn.href = `api/approve.php?courseID=${id}`;//跳轉到approve頁面
+      modalTitle.innerHTML = '是否核准課程'
+      modalBody.innerHTML = '操作不可逆'
+      approveBtn.href = '核准';
+    } else if (available) {
+      approveBtn.href = `api/launch.php?courseID=${id}`;
+      modalTitle.innerHTML = '是否下架課程'
+      modalBody.innerHTML = '下架課程'
+      approveBtn.href = '下架';
+    } else {
+      approveBtn.href = `api/launch.php?courseID=${id}`;
+      modalTitle.innerHTML = '是否上架課程'
+      modalBody.innerHTML = '上架課程'
+      approveBtn.href = '上架';
+    }
+    
   }
 </script>
 <?php

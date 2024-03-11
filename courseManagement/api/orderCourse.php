@@ -23,7 +23,7 @@ $output = [
 ];
 
 //得到總筆數
-$total_rows_sql = "SELECT count(1) FROM course c1 join user u1 on c1.teacherSN=u1.userID left join promotion p1 on c1.courseID= p1.courseID where promotionSN is null || CURRENT_DATE() BETWEEN whenStarted AND whenEnded";
+$total_rows_sql = "SELECT count(1) FROM course";
 $total_rows_stmt = $pdo->query("$total_rows_sql");
 $totalRows = $total_rows_stmt->fetch(PDO::FETCH_NUM)[0];
 
